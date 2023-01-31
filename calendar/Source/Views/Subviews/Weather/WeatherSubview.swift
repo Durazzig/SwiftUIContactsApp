@@ -20,19 +20,13 @@ struct WeatherSubview: View {
                 VStack {
                     HStack {
                         Spacer()
-                        Text("Weather")
-                        Spacer()
-                    }
-                    .padding()
-                    
-                    HStack {
-                        Spacer()
                         Image(uiImage: viewModel.weatherIconUrl.loadImage())
                             .aspectRatio(contentMode: .fit)
                             .frame(width: 100, height: 100, alignment: .center)
                             .clipShape(Circle())
                         Spacer()
                     }
+                    CustomLabel(title: "Weather", description: viewModel.weatherType)
                     CustomLabel(title: "City", description: viewModel.city)
                     CustomLabel(title: "Actual Temperature", description: "\(viewModel.temp)°")
                     CustomLabel(title: "Minimum Temperature", description: "\(viewModel.minTemp)°")

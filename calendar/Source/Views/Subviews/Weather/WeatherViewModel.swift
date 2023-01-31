@@ -14,6 +14,7 @@ class WeatherViewModel: ObservableObject {
     @Published var maxTemp: String = ""
     @Published var feelingTemp: String = ""
     @Published var temp: String = ""
+    @Published var weatherType: String = ""
     @Published var isLoading = false
     
     @Published var lat: String = ""
@@ -46,6 +47,9 @@ class WeatherViewModel: ObservableObject {
                     self.maxTemp = String(model.main.temp_max)
                     self.temp = String(model.main.temp)
                     self.feelingTemp = String(model.main.feels_like)
+                    if let weather = model.weather.first?.main {
+                        self.weatherType = weather
+                    }
                     if let icon = model.weather.first?.icon {
                         self.weatherIconUrl = "https://openweathermap.org/img/wn/\(icon)@2x.png"
                     }
